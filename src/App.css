@@ -1,0 +1,278 @@
+/* Importamos la fuente de caligrafía desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+
+/* Capa de fondo decorativa semitransparente que estaba en login.css */
+.app-container::before {
+  content: "";
+  position: absolute;
+  z-index: 0; 
+  background: url('https://svgshare.com/i/13uA.svg') repeat-x; /* Imagen decorativa repetida horizontalmente */
+  opacity: 0.18;          /* Transparencia */
+  pointer-events: none;   /* No bloquea clics */
+}
+
+/* El fondo de la carta tendrá su propio gradiente */
+.letter-background {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+  /* Añadimos flexbox para centrar el contenido */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden; /* Evita cualquier barra de desplazamiento */
+}
+
+.heart {
+  position: absolute;
+  top: -110px;
+  color: rgba(255, 255, 255, 0.8);
+  animation: fall linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Nuevo contenedor para centrar la carta */
+.content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Estilos de la carta (el papel blanco) */
+.content {
+  text-align: center;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  max-width: 750px; /* Tamaño decente, ni muy ancho ni muy angosto */
+  width: 90vw; /* Ancho adaptable */
+}
+
+.title {
+  font-size: 3rem;
+  color: #e91e63;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Georgia', serif;
+}
+
+.reveal-button {
+  background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+  color: white;
+  border: none;
+  padding: 1rem rem;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.reveal-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+}
+
+.letter {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+  text-align: left;
+  margin-top: 2rem;
+  font-family: 'Dancing Script', cursive;}
+
+/* Estilos específicos para el <pre> dentro de la carta */
+.letter pre {
+  white-space: pre-wrap; /* Permite que el texto se ajuste */
+  word-wrap: break-word; /* Fuerza el corte de palabras largas si es necesario */
+  font-family: inherit;  /* Hereda la fuente de .letter */
+  margin: 0;
+}
+
+/* Cursor parpadeante para el efecto de máquina de escribir */
+.typing-cursor {
+  animation: blink 0.7s infinite;
+  font-weight: bold; /* Hacemos el cursor un poco más grueso */
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+
+.signature {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #e91e63;
+  margin-top: 2rem;
+  font-family: 'Dancing Script', cursive;}
+
+/* Estilo para el mensaje de bienvenida */
+.welcome-message {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #3a3a3a; /* Un gris oscuro más suave */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+/* Eliminamos todos los estilos del sobre que ya no se usan */
+/* .envelope-wrapper, .envelope, .envelope-flap, etc. han sido removidos */
+
+/* ==== Pantalla de bienvenida ==== */
+.welcome-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.welcome-card h1 {
+  color: #222;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.welcome-card p {
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+/* Botón para cerrar sesión */
+.logout-btn, .login-btn {
+  background: #222;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex; /* Habilitamos flexbox */
+  align-items: center; /* Centramos verticalmente */
+  gap: 8px; /* Espacio entre el ícono y el texto */
+}
+
+.logout-btn:hover, .login-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+}
+
+/* Contenedor para los botones de la esquina */
+.top-right-controls {
+  position: absolute;
+  top: 20px; /* Ajusta según necesites */
+  right: 20px; /* Ajusta según necesites */
+  display: flex;
+  gap: 15px; /* Espacio entre botones */
+  z-index: 100;
+}
+
+/* Estilo para los botones de música y logout */
+.music-control-btn, .page-logout-btn {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  border: none;
+  color: white;
+  width: 45px; /* Botón circular */
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: static; /* Quitamos el posicionamiento absoluto de cada botón */
+}
+
+.page-logout-btn {
+  width: auto; /* Ancho automático para el botón de logout */
+  padding: 0 15px;
+}
+
+/* ==== Diseño responsivo para pantallas pequeñas ==== */
+@media (max-width: 768px) {
+  /* Ajustes para tablets y móviles grandes */  
+  .content, .login-card, .welcome-card {
+    padding: 2rem;
+    width: 90%;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Ajustes más específicos para móviles pequeños */
+  .content, .login-card, .welcome-card {    
+    width: 95%;
+    padding: 1.5rem 1rem; /* Padding más equilibrado */
+    border-radius: 16px;
+  }
+
+  .title {
+    font-size: 2rem; /* Reducimos el título principal */
+    margin-bottom: 1.5rem;
+  }
+
+  .letter {
+    font-size: 1rem; /* Reducimos el texto de la carta */
+  }
+
+  .reveal-button, .login-btn {    
+    font-size: 1rem; /* Hacemos los botones un poco más pequeños */
+    padding: 0.8rem 1.5rem;
+  }
+
+  .top-right-controls {
+    top: 10px;
+    right: 10px;
+    gap: 10px;
+  }
+
+  .music-control-btn, .page-logout-btn {
+    width: 40px; height: 40px; font-size: 1rem;
+  }
+
+  .page-logout-btn { width: auto; padding: 0 10px; }
+}
+
+/* Estilos para la nota "Continuará..." */
+.continua-note {
+  position: absolute;
+  bottom: 20px; /* Distancia desde abajo */
+  right: 30px; /* Distancia desde la derecha */
+  font-family: 'Dancing Script', cursive; /* Fuente bonita */
+  font-size: 1.8rem; /* Tamaño de fuente */
+  color: #e91e63; /* Color que combine con el diseño */
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  z-index: 100; /* Asegura que esté por encima de otros elementos */
+  pointer-events: none; /* Para que no interfiera con clics */
+}

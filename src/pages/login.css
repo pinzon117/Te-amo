@@ -1,0 +1,413 @@
+/* ==== Reset y estilos base ==== */
+/* Importamos una fuente más moderna */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+/* Aplica a todos los elementos: quita márgenes y padding por defecto, 
+   y usa el modelo de caja border-box (el padding y borde cuentan dentro del tamaño total) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos base para el body */
+body {
+  font-family: 'Poppins', sans-serif; /* Nueva fuente */
+  color: #fff;                     /* Texto blanco para que contraste con el fondo */
+  min-height: 100vh;                /* Altura mínima de toda la pantalla */
+}
+
+/* Contenedor principal de la aplicación */
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Fondo degradado animado */
+ background: linear-gradient(45deg, #ff69b4, #ff8c94, #f08080);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ==== Estilos para la tarjeta de login ==== */
+.login-card, .welcome-card {
+  /* Estilo Glassmorphism (cristal) */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px); /* Para Safari */
+  border-radius: 24px; 
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff; /* Texto blanco dentro de la tarjeta */
+}
+
+/* Eliminamos animaciones no utilizadas en este archivo */
+/* @keyframes blueShadowPulse y @keyframes slideUp han sido removidos */
+
+/* ==== Header del login ==== */
+.login-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-header h1 {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.login-header p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+}
+
+/* ==== Formulario de login ==== */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacio entre campos */
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.input-group input {
+  padding: 12px 5px; /* Menos padding lateral */
+  border: none; /* Sin borde */
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3); /* Línea inferior */
+  background: transparent; /* Fondo transparente */
+  font-size: 1rem;
+  color: #fff; /* Texto blanco */
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Estilo cuando el input está enfocado */
+.input-group input:focus {
+  border-bottom-color: #fdbb2d; /* Cambia el color de la línea al hacer foco */
+}
+
+/* Estilo cuando el input está deshabilitado */
+.input-group input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==== Botón de login ==== */
+.login-btn {
+  background: linear-gradient(90deg, #fdbb2d, #b21f1f);
+  color: #fff;
+  border: none;
+  padding: 15px 0;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover */
+.login-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Efecto al hacer clic */
+.login-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Botón deshabilitado */
+.login-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ==== Mensajes de error o éxito ==== */
+.mensaje {
+  padding: 15px 20px;
+  border-radius: 12px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 20px;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.mensaje.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.mensaje.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Animación de aparición para mensajes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==== Footer con usuarios de prueba ==== */
+.login-footer {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e1e5e9;
+  text-align: center;
+}
+
+.login-footer p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.test-users {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.test-users span {
+  background: #f8f9fa;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #495057;
+  font-family: 'Courier New', monospace;
+  border: 1px solid #e9ecef;
+}
+
+/* ==== Pantalla de bienvenida ==== */
+.welcome-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  animation: slideUp 0.6s ease-out;
+}
+
+.welcome-card h1 {
+  color: #222;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.welcome-card p {
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+/* Botón para cerrar sesión */
+.logout-btn {
+  background: #222;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+}
+
+/* ==== Diseño responsivo para pantallas pequeñas ==== */
+@media (max-width: 480px) {
+  .app-container {
+    padding: 10px;
+  }
+  .login-card, .welcome-card {
+    padding: 25px 20px;
+    border-radius: 16px;
+  }
+  .login-header h1,
+  .welcome-card h1 {
+    font-size: 1.3rem;
+  }
+}
+
+/* ==== Header layout adjustments ==== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+header .user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+header .search-bar {
+  flex-grow: 1;
+  margin: 0 1rem;
+  max-width: 600px;
+}
+
+header .logout-btn {
+  background-color: #ef4444; /* Tailwind red-500 */
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+header .logout-btn:hover {
+  background-color: #dc2626; /* Tailwind red-600 */
+}
+
+/* ==== Task list container adjustments ==== */
+.task-list-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .task-list-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .task-list-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==== Estilos para el cuadro de tarea ==== */
+.todo-item-container {
+  background-color: white;
+  border: 2px solid #0000ff; /* Azul */
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px 0;
+  color: black;
+  box-shadow: 2px 2px 8px rgba(0,0,255,0.2);
+}
+
+/* ==== Modal styles ==== */
+.task-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.task-modal-content {
+  background-color: white;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* ==== Full page container for task list ==== */
+.full-page-container {
+  width: 100vw;
+  min-height: 100vh;
+  padding: 1rem 2rem;
+  background-color: #f9fafb;
+  box-sizing: border-box;
+}
+
+.todo-item-text {
+  color: black;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Botón clásico amarillo para editar */
+.btn-editar {
+  background-color: #3bff6f; /* Amarillo */
+  color: black;
+  border: 2px solid #fbc02d;
+  padding: 8px 16px;
+  margin-right: 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-editar:hover {
+  background-color: #c1b492;
+}
+
+/* Botón clásico rojo para eliminar */
+.btn-eliminar {
+  background-color: #8809cc; /* Rojo */
+  color: black;
+  border: 2px solid #d32f2f;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-eliminar:hover {
+  background-color: #d32f2f;
+}
