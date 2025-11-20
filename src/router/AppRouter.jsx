@@ -1,5 +1,5 @@
 import {
-    createBrowserRouter,
+    createHashRouter,
     RouterProvider,
 } from "react-router-dom"
 import LoginPage from "../pages/login"
@@ -7,7 +7,7 @@ import LetterPage from "../pages/LetterPage"
 import PrivateRoute from "../context/PrivateRoute"
 import { AuthProvider } from "../context/AuthContext"
 
-const router = createBrowserRouter([
+const router = createHashRouter([
     {
         path: "/login",
         element: <LoginPage />,
