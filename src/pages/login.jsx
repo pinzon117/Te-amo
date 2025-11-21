@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import "./login.css"; // Importamos los estilos del login
 
@@ -10,6 +11,7 @@ function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [hearts, setHearts] = useState([]);
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   // Lógica para la lluvia de corazones
   useEffect(() => {
@@ -39,7 +41,9 @@ function Login() {
     await new Promise((resolve) => setTimeout(resolve, 500));
     // Usa el contexto para login y comprueba el resultado.
     const success = login(username, password);
-    if (!success) {
+    if (success) {
+      navigate("/carta");
+    } else {
       setMensaje("Usuario o contraseña incorrectos.");
     }
     setIsLoading(false);

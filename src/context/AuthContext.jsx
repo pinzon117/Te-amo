@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { usuarios } from "../../db.js"; // Importamos los usuarios
 
 // 1. Creamos el contexto que compartirán los componentes.
@@ -31,7 +30,6 @@ export const AuthProvider = ({ children }) => {
   });
 
   const [isAuthenticated, setIsAuthenticated] = useState(() => !!localStorage.getItem("user"));
-  const navigate = useNavigate();
 
   // Función de login
   const login = (username, password) => {
@@ -45,8 +43,6 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("user", JSON.stringify(userData));
       setUser(userData);
       setIsAuthenticated(true);
-      // Una vez autenticado, lo llevamos a la página de la carta.
-      navigate("/carta");
       return true; // Devolvemos `true` para indicar que el login fue exitoso.
     } else {
       console.error("Credenciales incorrectas");
@@ -61,7 +57,6 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("user");
     setUser(null);
     setIsAuthenticated(false);
-    navigate("/login");
   };
 
   // El valor que proveerá el contexto a todos sus hijos.
