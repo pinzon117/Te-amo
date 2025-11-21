@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/",
-        element: <PrivateRoute><LetterPage /></PrivateRoute>
+        element: <LoginPage />
     }
 ], {
     basename: import.meta.env.BASE_URL,
